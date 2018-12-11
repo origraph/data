@@ -1,0 +1,11 @@
+//get all members of the senate
+curl "https://api.propublica.org/congress/v1/115/senate/members.json" -H "X-API-Key:API-KEY" > senateMembers.json
+
+//get member specific votes for a given bill, in this case the Yemen Bill (session 2, roll call 250): 
+curl "https://api.propublica.org/congress/v1/115/senate/sessions/2/votes/250.json" -H "X-API-Key:API-KEY" > senate_votes_yemen.json
+
+//get all press releases for a given bill, in this case the Yemen bill
+curl "https://api.propublica.org/congress/v1/115/bills/sjres54/statements.json" -H "X-API-Key:API-KEY" > pressReleases.json
+
+//use proPublicaScraper.js to get the financial contributions for all candidates. This call will get it for one candidate at a time. 
+curl "https://api.propublica.org/campaign-finance/v1/2018/candidates/" + member.fec_candidate_id + "/independent_expenditures.json" -H "X-API-Key:API-KEY" > contributions.json
